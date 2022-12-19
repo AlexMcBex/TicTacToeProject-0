@@ -1,0 +1,76 @@
+body {
+    background-image: url(/img/tic-tac-toe-seamless-background-on-dark-blue-illustration-vector.jpg);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+}
+h1 {
+    color: white;
+    background: rgb(80, 80, 140);
+}
+#board {
+  display: grid;
+}
+button {
+    width: 190px;
+    height: 30px;
+    margin:5px;
+    background: rgb(80, 80, 140);
+    color: white;
+}
+.row {
+    display: table;
+}
+
+.box, .clickedBox {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 180px;
+    color: white;
+    display: table-cell;
+    width: 33%;
+    height: 219px;
+    border: 5px solid navy;
+    background: rgb(80, 80, 140);
+    border-radius: 5px;
+    padding: 5px;
+}
+.clickedBox{
+    background: rgb(60, 60, 120);
+    pointer-events: none;
+}
+.box:hover {
+    background-color: rgb(100, 100, 160);
+}
+#box1  {
+    border-top: none;
+border-left: none;
+}
+#box2  {
+    border-top: none;
+}
+#box3 {
+    border-top: none;
+border-right: none;
+}
+#box4  {
+border-left: none;
+}
+#box5 {
+    border: 5px solid navy;
+}
+#box6  {
+border-right: none;
+}
+#box7  {
+    border-bottom: none;
+border-left: none;
+}
+#box8  {
+    border-bottom: none;
+}
+#box9  {
+    border-bottom: none;
+border-right: none;
+}
