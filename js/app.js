@@ -1,29 +1,62 @@
 //query of all clickable boxes
 const  box = document.getElementsByClassName("box")
 const clickedBox = document.getElementsByClassName("clickedBox")
+
+//if false the game is on
+let gameFinish = false
+let gameTie = false
+//X clicks and O clicks
+let XBoxes = [ ]
+let OBoxes = [ ]
+
 //true if it's the player X turn
 let playerXTurn = true
-// const winCombos = {
-//     []
-// }
+const turnX = () => {
+    playerXTurn = true
+}
+
+//     // make array of winning combos
+const winCombo1 =  ['box1', 'box2', 'box3']
+const winCombo2 =  ['box1', 'box5', 'box9']
+const winCombo3 =  ['box1', 'box4', 'box7']
+const winCombo4 =  ['box2', 'box5', 'box8']
+const winCombo5 =  ['box3', 'box5', 'box7']
+const winCombo6 =  ['box3', 'box6', 'box9']
+const winCombo7 =  ['box4', 'box5', 'box6']
+const winCombo8 =  ['box7', 'box8', 'box9']
+// const winCombos = winCombo1 + winCombo2
+console.log("Win Combo n1: " , winCombo1)
+
+const emptyArrays = () =>{
+  XBoxes = []
+  OBoxes = []
+}
 //game starts or the reset button is clicked
 const gameStart = () => {
-    console.log("Game Started")
+     //turn of player X
+     let playerXturn = true
      //all boxes go back to normal
      for(let i=0 ; i < box.length ; i++){
-        box[i].classList.add('box')}
-     //turn of player X
-    playerXturn = true
+        box[i].classList.add('box')
+        box[i].textContent= "" 
+        box[i].classList.remove("clickedBox")   
+    }
+    turnX()
+    emptyArrays()
+    console.clear()
+    let gameFinish = false
+    let gameTie = false
+    
+    console.log("Game Started")
+    // empty clicked boxes arrays
 }
+
 //Reset Button
 const button = document.querySelector("button")
 button.addEventListener('click', gameStart)
 //board
 const board = document.getElementById("board")
 
-//if false the game is on
-let gameFinish = false
-let gameTie = false
 
 //check for tie
 const checkTie = () => {
@@ -34,6 +67,7 @@ const checkTie = () => {
         console.log("TIE: " , gameTie)
         gameOver()
     } else {
+        console.log("No tie: " , gameTie)
         playerXTurn = !playerXTurn
         console.log("Turn of X user: ", playerXTurn)
     }
@@ -42,19 +76,17 @@ const checkTie = () => {
 
 //check for a win, if no win chek for a tie
 const checkWin = () => {
-    //make array of winning combos
+    
+    if (XBoxes === winCombo1) {
+        console.log("WINNER!!!!!")
+    } else {checkTie()}
     // const winCombos = 
         //if array of current user clicked boxes === winning array win = true
     //if win = true gameOver
     //else check for tie(no more clickable boxes) function
-    checkTie()
+    // checkTie()
 }
 
-//X clicks and O clicks
-let XBoxes = [ ]
-let OBoxes = [ ]
-//make an array of clicked boxes
-// let arrClickedBox = [XBoxes  + OBoxes]
 
 //When somebody clicks on a block
 const clickBox = (e ) => {
