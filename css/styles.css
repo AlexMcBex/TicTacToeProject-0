@@ -21,6 +21,9 @@ button {
 .row {
     display: table;
 }
+h3{
+    color:white;
+}
 
 .box, .clickedBox {
     padding: 0;

@@ -1,6 +1,13 @@
 //query of all clickable boxes
 const  box = document.getElementsByClassName("box")
 const clickedBox = document.getElementsByClassName("clickedBox")
+const turnDisplayer = document.getElementById("turnDisplayer")
+
+//true if it's the player X turn
+let playerXTurn = true
+const turnX = () => {
+    playerXTurn = true
+}
 
 //if false the game is on
 let gameFinish = false
@@ -9,23 +16,18 @@ let gameTie = false
 let XBoxes = [ ]
 let OBoxes = [ ]
 
-//true if it's the player X turn
-let playerXTurn = true
-const turnX = () => {
-    playerXTurn = true
-}
 
-//     // make array of winning combos
-const winCombo1 =  ['box1', 'box2', 'box3']
-const winCombo2 =  ['box1', 'box5', 'box9']
-const winCombo3 =  ['box1', 'box4', 'box7']
-const winCombo4 =  ['box2', 'box5', 'box8']
-const winCombo5 =  ['box3', 'box5', 'box7']
-const winCombo6 =  ['box3', 'box6', 'box9']
-const winCombo7 =  ['box4', 'box5', 'box6']
-const winCombo8 =  ['box7', 'box8', 'box9']
-// const winCombos = winCombo1 + winCombo2
-console.log("Win Combo n1: " , winCombo1)
+    // make array of winning combos
+// const winCombos =  [
+// ['box1' && 'box2' && 'box3'],
+// ['box1', 'box5', 'box9'],
+// ['box1', 'box4', 'box7'],
+// ['box2', 'box5', 'box8'],
+// ['box3', 'box5', 'box7'],
+// ['box3', 'box6', 'box9'],
+// ['box4', 'box5', 'box6'],
+// ['box7', 'box8', 'box9']
+// ]
 
 const emptyArrays = () =>{
   XBoxes = []
@@ -50,6 +52,14 @@ const gameStart = () => {
     console.log("Game Started")
     // empty clicked boxes arrays
 }
+// const displayTurn =() => {
+//     if (playerXTurn === true){
+//         turnDisplayer.textContent= "It is X Player's turn"
+//     } else {
+//         turnDisplayer.textContent = "It is O Player's turn"
+//     }
+// }
+// displayTurn()
 
 //Reset Button
 const button = document.querySelector("button")
@@ -65,27 +75,68 @@ const checkTie = () => {
     if (clickedBox.length === 9){
         gameTie = true
         console.log("TIE: " , gameTie)
-        gameOver()
+        gameOver("TIE")
     } else {
-        console.log("No tie: " , gameTie)
+        // console.log("No tie: " , gameTie)
         playerXTurn = !playerXTurn
         console.log("Turn of X user: ", playerXTurn)
     }
     }
 
+   
+// const checkXMatches = () => {
+//     for (let  i = 0 ; i < winCombos.length ; i++){
+//         const checkXMatches = winCombos[i].every(value => {
+//             return XBoxes.includes(value);
+            
+//             console.log(winCombos[i])
+//           });
+// }
+// }
+// const checkOMatches = () => {
+//     for (let  i = 0 ; i < winCombos.length ; i++){
+//         const checkOMatches = winCombos[i].every(value => {
+//             return OBoxes.includes(value);
+//           });
+// }
+// }
 
 //check for a win, if no win chek for a tie
 const checkWin = () => {
-    
-    if (XBoxes === winCombo1) {
-        console.log("WINNER!!!!!")
-    } else {checkTie()}
-    // const winCombos = 
-        //if array of current user clicked boxes === winning array win = true
-    //if win = true gameOver
-    //else check for tie(no more clickable boxes) function
-    // checkTie()
+    if (playerXTurn && 
+        (XBoxes.includes('box1') && XBoxes.includes('box2') && XBoxes.includes('box3'))||
+        (XBoxes.includes('box1') && XBoxes.includes('box4') && XBoxes.includes('box7'))||
+        (XBoxes.includes('box1') && XBoxes.includes('box5') && XBoxes.includes('box9'))||
+        (XBoxes.includes('box2') && XBoxes.includes('box5') && XBoxes.includes('box8'))||
+        (XBoxes.includes('box2') && XBoxes.includes('box5') && XBoxes.includes('box7'))||
+        (XBoxes.includes('box3') && XBoxes.includes('box6') && XBoxes.includes('box9'))||
+        (XBoxes.includes('box4') && XBoxes.includes('box5') && XBoxes.includes('box6'))||
+        (XBoxes.includes('box7') && XBoxes.includes('box8') && XBoxes.includes('box9'))
+        ) {
+        console.log("X WINNER!!!!!")
+        gameOver("X WINS")
+    }  else if (!playerXTurn && 
+        (OBoxes.includes('box1') && OBoxes.includes('box4') && OBoxes.includes('box7'))||
+        (OBoxes.includes('box1') && OBoxes.includes('box5') && OBoxes.includes('box9'))||
+        (OBoxes.includes('box2') && OBoxes.includes('box5') && OBoxes.includes('box8'))||
+        (OBoxes.includes('box2') && OBoxes.includes('box5') && OBoxes.includes('box7'))||
+        (OBoxes.includes('box3') && OBoxes.includes('box6') && OBoxes.includes('box9'))||
+        (OBoxes.includes('box4') && OBoxes.includes('box5') && OBoxes.includes('box6'))||
+        (OBoxes.includes('box1') && OBoxes.includes('box2') && OBoxes.includes('box3'))||
+        (OBoxes.includes('box7') && OBoxes.includes('box8') && OBoxes.includes('box9'))
+        ) {
+        console.log("O WINNER!!!!!")
+        gameOver("O WINS")
+    } else {
+        checkTie()
+    }
 }
+    // const winCombos = 
+        // if array of current user clicked boxes === winning array win = true
+    // if win = true gameOver
+    // else check for tie(no more clickable boxes) function
+    // checkTie()
+
 
 
 //When somebody clicks on a block
@@ -143,10 +194,19 @@ for(let i=0 ; i < box.length ; i++){
 
 
 
-const gameOver = () => {
+const gameOver = (key) => {
     //all boxes are unclickable
 for(let i=0 ; i < box.length ; i++){
     box[i].classList.add("clickedBox")
+}
+if (key === "TIE"){
+    window.alert("The game is a tie")
+} else if (key === "X WINS") {
+    window.alert("X Player Wins!") 
+} else if (key === "O WINS"){
+    window.alert("O Player Wins!")
+} else {
+    window.alert("Game Over")
 }
     //check for win X
     //check for win O
@@ -159,3 +219,6 @@ console.log("GAME OVER: " , gameFinish)
 }
 
 gameStart()
+
+// console.log(wins())
+// console.log(checkXMatches)
