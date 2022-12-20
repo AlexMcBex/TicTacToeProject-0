@@ -74,7 +74,7 @@ const checkTie = () => {
     //if tie = true then gameOver
     if (clickedBox.length === 9){
         gameTie = true
-        console.log("TIE: " , gameTie)
+        // console.log("TIE: " , gameTie)
         gameOver("TIE")
     } else {
         // console.log("No tie: " , gameTie)
@@ -101,7 +101,7 @@ const checkTie = () => {
 // }
 // }
 
-//check for a win, if no win chek for a tie
+//check for a win, if no win check for a tie
 const checkWin = () => {
     if (playerXTurn && 
         (XBoxes.includes('box1') && XBoxes.includes('box2') && XBoxes.includes('box3'))||
@@ -113,7 +113,7 @@ const checkWin = () => {
         (XBoxes.includes('box4') && XBoxes.includes('box5') && XBoxes.includes('box6'))||
         (XBoxes.includes('box7') && XBoxes.includes('box8') && XBoxes.includes('box9'))
         ) {
-        console.log("X WINNER!!!!!")
+        // console.log("X WINS")
         gameOver("X WINS")
     }  else if (!playerXTurn && 
         (OBoxes.includes('box1') && OBoxes.includes('box4') && OBoxes.includes('box7'))||
@@ -125,7 +125,7 @@ const checkWin = () => {
         (OBoxes.includes('box1') && OBoxes.includes('box2') && OBoxes.includes('box3'))||
         (OBoxes.includes('box7') && OBoxes.includes('box8') && OBoxes.includes('box9'))
         ) {
-        console.log("O WINNER!!!!!")
+        // console.log("O WINS")
         gameOver("O WINS")
     } else {
         checkTie()
@@ -188,11 +188,6 @@ for(let i=0 ; i < box.length ; i++){
     // box[i].addEventListener('click', function con(){
     //     console.log("you clicked on:" , box[i].id)})
 }
-
-
-
-
-
 
 const gameOver = (key) => {
     //all boxes are unclickable
