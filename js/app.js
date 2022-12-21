@@ -54,9 +54,9 @@ const gameStart = () => {
 }
 // const displayTurn =() => {
 //     if (playerXTurn === true){
-//         turnDisplayer.textContent= "It is X Player's turn"
+//         turnDisplayer.innerHTML= "It is X Player's turn"
 //     } else {
-//         turnDisplayer.textContent = "It is O Player's turn"
+//         turnDisplayer.innerHTML = "It is O Player's turn"
 //     }
 // }
 // displayTurn()
