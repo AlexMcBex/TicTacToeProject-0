@@ -108,8 +108,8 @@ const checkWin = () => {
         (XBoxes.includes('box1') && XBoxes.includes('box4') && XBoxes.includes('box7'))||
         (XBoxes.includes('box1') && XBoxes.includes('box5') && XBoxes.includes('box9'))||
         (XBoxes.includes('box2') && XBoxes.includes('box5') && XBoxes.includes('box8'))||
-        (XBoxes.includes('box2') && XBoxes.includes('box5') && XBoxes.includes('box7'))||
         (XBoxes.includes('box3') && XBoxes.includes('box6') && XBoxes.includes('box9'))||
+        (XBoxes.includes('box3') && XBoxes.includes('box5') && XBoxes.includes('box7'))||
         (XBoxes.includes('box4') && XBoxes.includes('box5') && XBoxes.includes('box6'))||
         (XBoxes.includes('box7') && XBoxes.includes('box8') && XBoxes.includes('box9'))
         ) {
@@ -119,7 +119,7 @@ const checkWin = () => {
         (OBoxes.includes('box1') && OBoxes.includes('box4') && OBoxes.includes('box7'))||
         (OBoxes.includes('box1') && OBoxes.includes('box5') && OBoxes.includes('box9'))||
         (OBoxes.includes('box2') && OBoxes.includes('box5') && OBoxes.includes('box8'))||
-        (OBoxes.includes('box2') && OBoxes.includes('box5') && OBoxes.includes('box7'))||
+        (OBoxes.includes('box3') && OBoxes.includes('box5') && OBoxes.includes('box7'))||
         (OBoxes.includes('box3') && OBoxes.includes('box6') && OBoxes.includes('box9'))||
         (OBoxes.includes('box4') && OBoxes.includes('box5') && OBoxes.includes('box6'))||
         (OBoxes.includes('box1') && OBoxes.includes('box2') && OBoxes.includes('box3'))||
